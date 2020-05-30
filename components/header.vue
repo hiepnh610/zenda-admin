@@ -52,7 +52,7 @@ export default {
   head () {
     return {
       bodyAttrs: {
-        class: this.isCollapse ? 'pace-done body-small mini-navbar' : 'pace-done body-small'
+        class: this.isCollapse ? 'pace-done mini-navbar' : 'pace-done'
       }
     }
   }
