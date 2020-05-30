@@ -20,7 +20,7 @@
             </ul>
           </div>
           <div class="logo-element">
-            IN+
+            BB
           </div>
         </li>
 

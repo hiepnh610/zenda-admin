@@ -1,13 +1,11 @@
 <template>
-  <div>
-    <div id="wrapper">
-      <SidebarComponent />
+  <div id="wrapper">
+    <SidebarComponent />
 
-      <div id="page-wrapper" class="gray-bg dashbard-1">
-        <HeaderComponent />
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+      <HeaderComponent />
 
-        <nuxt />
-      </div>
+      <nuxt />
     </div>
   </div>
 </template>

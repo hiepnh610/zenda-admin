@@ -9,6 +9,7 @@
         <a
           class="navbar-minimalize minimalize-styl-2 btn btn-primary"
           href="#"
+          @click="toggleSidebar()"
         >
           <i class="fa fa-bars" />
         </a>
@@ -32,8 +33,28 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Header',
 
+  data () {
+    return {
+      isCollapse: false
+    }
+  },
+
   computed: {
     ...mapGetters(['isAuthenticated'])
+  },
+
+  methods: {
+    toggleSidebar () {
+      this.isCollapse = !this.isCollapse
+    }
+  },
+
+  head () {
+    return {
+      bodyAttrs: {
+        class: this.isCollapse ? 'pace-done body-small mini-navbar' : 'pace-done body-small'
+      }
+    }
   }
 }
 </script>
