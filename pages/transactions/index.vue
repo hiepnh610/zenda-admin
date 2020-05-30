@@ -1,12 +1,16 @@
 <template>
-  <div class="container">
-    Transactions
-  </div>
+  <TableComponent />
 </template>
 
 <script>
+import TableComponent from '@/components/table.vue'
+
 export default {
-  name: 'Transactions'
+  name: 'Transactions',
+
+  components: {
+    TableComponent
+  }
 }
 </script>
 

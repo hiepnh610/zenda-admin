@@ -1,12 +1,16 @@
 <template>
-  <div class="container">
-    Gifts
-  </div>
+  <TableComponent />
 </template>
 
 <script>
+import TableComponent from '@/components/table.vue'
+
 export default {
-  name: 'Gifts'
+  name: 'Gifts',
+
+  components: {
+    TableComponent
+  }
 }
 </script>
 

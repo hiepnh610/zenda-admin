@@ -45,7 +45,8 @@ export default {
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
   /*
   ** Axios module configuration
@@ -74,10 +75,10 @@ export default {
 
   auth: {
     redirect: {
-      login: '/login',
-      logout: '/login',
-      callback: '/login',
-      home: '/state'
+      login: '/',
+      logout: '/',
+      callback: '/',
+      home: '/dashboard'
     },
 
     strategies: {

@@ -27,7 +27,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'Header'
+  name: 'Header',
+
+  computed: {
+    ...mapGetters(['isAuthenticated'])
+  }
 }
 </script>

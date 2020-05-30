@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import SidebarComponent from '@/components/sidebar.vue'
 import HeaderComponent from '@/components/header.vue'
 
@@ -22,6 +23,10 @@ export default {
   components: {
     SidebarComponent,
     HeaderComponent
+  },
+
+  computed: {
+    ...mapGetters(['isAuthenticated'])
   }
 }
 </script>

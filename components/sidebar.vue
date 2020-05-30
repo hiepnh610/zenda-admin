@@ -24,12 +24,44 @@
           </div>
         </li>
 
-        <li class="active">
-          <a href="#">
-            <i class="fa fa-th-large" />
+        <li>
+          <nuxt-link to="/dashboard">
+            <i class="fa fa-th-large" aria-hidden="true" />
 
             <span class="nav-label">Dashboards</span>
-          </a>
+          </nuxt-link>
+        </li>
+
+        <li>
+          <nuxt-link to="/accounts">
+            <i class="fa fa-user" aria-hidden="true" />
+
+            <span class="nav-label">Accounts</span>
+          </nuxt-link>
+        </li>
+
+        <li>
+          <nuxt-link to="/gifts">
+            <i class="fa fa-gift" aria-hidden="true" />
+
+            <span class="nav-label">Gifts</span>
+          </nuxt-link>
+        </li>
+
+        <li>
+          <nuxt-link to="/transactions">
+            <i class="fa fa-credit-card" aria-hidden="true" />
+
+            <span class="nav-label">Transactions</span>
+          </nuxt-link>
+        </li>
+
+        <li>
+          <nuxt-link to="/settings">
+            <i class="fa fa-cog" aria-hidden="true" />
+
+            <span class="nav-label">Settings</span>
+          </nuxt-link>
         </li>
       </ul>
     </div>
@@ -37,7 +69,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'Sidebar'
+  name: 'Sidebar',
+
+  computed: {
+    ...mapGetters(['isAuthenticated'])
+  }
 }
 </script>
