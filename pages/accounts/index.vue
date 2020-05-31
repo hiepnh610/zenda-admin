@@ -3,6 +3,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
+import { ACTION, GETTER } from '@/constants/name-space'
+
 import TableComponent from '@/components/table.vue'
 
 export default {
@@ -10,6 +14,16 @@ export default {
 
   components: {
     TableComponent
+  },
+
+  computed: {
+    ...mapGetters({
+      accounts: GETTER.ACCOUNTS
+    })
+  },
+
+  mounted () {
+    this.$store.dispatch(ACTION.ACCOUNTS)
   }
 }
 </script>

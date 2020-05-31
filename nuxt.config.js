@@ -1,3 +1,12 @@
+import dotenv from 'dotenv'
+
+const config = {
+  dev: { path: '.env.development' },
+  production: { path: '.env.production' }
+}
+const devEnv = dotenv.config(config.dev).parsed
+const prodEnv = dotenv.config(config.production).parsed
+
 export default {
   mode: 'spa',
   /*
@@ -46,13 +55,16 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    '@nuxtjs/dotenv'
   ],
   /*
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL:
+      process.env.NODE_ENV !== 'production' ? devEnv.BASE_URL : prodEnv.BASE_URL
   },
   /*
   ** Build configuration

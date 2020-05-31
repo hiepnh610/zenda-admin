@@ -1,5 +1,5 @@
 export const API = {
-  ACCOUNTS: '/accounts',
-  GIFTS: '/gifts',
-  TRANSACTIONS: '/transactions'
+  ACCOUNTS: '/api/accounts',
+  GIFTS: '/api/gifts',
+  TRANSACTIONS: '/api/transactions'
 }
