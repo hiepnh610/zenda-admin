@@ -20,47 +20,32 @@
       <div class="table-responsive">
         <table class="table table-striped text-center">
           <thead class="text-center">
-            <tr>
-              <th class="text-center">
-                User
-              </th>
-              <th class="text-center">
-                Give Bag
-              </th>
-              <th class="text-center">
-                Receive Bag
-              </th>
-              <th class="text-center">
-                Action
+            <tr v-if="columns">
+              <th
+                v-for="(column, index) in columns"
+                :key="index"
+                class="text-center"
+              >
+                {{ column }}
               </th>
             </tr>
           </thead>
 
-          <tbody>
-            <tr>
-              <td>Nguyen Van A</td>
-              <td>10</td>
-              <td>50</td>
+          <tbody v-if="data">
+            <tr v-for="(item, index) in data" :key="index">
               <td>
-                <button class="btn btn-xs btn-primary">
-                  View
-                </button>
-
-                <button class="btn btn-xs btn-danger">
-                  Deleted
-                </button>
+                {{ item.display_name }}
               </td>
-            </tr>
 
-            <tr>
-              <td>Nguyen Van A</td>
-              <td>10</td>
-              <td>50</td>
               <td>
-                <button class="btn btn-xs btn-primary">
-                  View
-                </button>
+                {{ item.give_bag }}
+              </td>
 
+              <td>
+                {{ item.receive_bag }}
+              </td>
+
+              <td>
                 <button class="btn btn-xs btn-danger">
                   Deleted
                 </button>
@@ -75,6 +60,18 @@
 
 <script>
 export default {
-  name: 'Table'
+  name: 'Table',
+
+  props: {
+    columns: {
+      type: Array,
+      required: true
+    },
+
+    data: {
+      type: Array,
+      required: true
+    }
+  }
 }
 </script>
