@@ -18,14 +18,10 @@
       </div>
 
       <div class="table-responsive">
-        <table class="table table-striped text-center">
-          <thead class="text-center">
+        <table class="table table-striped">
+          <thead>
             <tr v-if="columns">
-              <th
-                v-for="(column, index) in columns"
-                :key="index"
-                class="text-center"
-              >
+              <th v-for="(column, index) in columns" :key="index">
                 {{ column }}
               </th>
             </tr>
@@ -39,6 +35,10 @@
 
               <td>
                 {{ gift.gift_link }}
+              </td>
+
+              <td>
+                {{ gift.created_at }}
               </td>
 
               <td>
@@ -64,7 +64,7 @@ export default {
 
   data () {
     return {
-      columns: ['Gift Name', 'Gift Link', 'Actions']
+      columns: ['Gift Name', 'Gift Link', 'Created At', 'Actions']
     }
   },
 

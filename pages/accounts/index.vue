@@ -18,14 +18,10 @@
       </div>
 
       <div class="table-responsive">
-        <table class="table table-striped text-center">
-          <thead class="text-center">
+        <table class="table table-striped">
+          <thead>
             <tr v-if="columns">
-              <th
-                v-for="(column, index) in columns"
-                :key="index"
-                class="text-center"
-              >
+              <th v-for="(column, index) in columns" :key="index">
                 {{ column }}
               </th>
             </tr>
@@ -43,6 +39,10 @@
 
               <td>
                 {{ account.receive_bag }}
+              </td>
+
+              <td>
+                {{ account.created_at }}
               </td>
 
               <td>
@@ -68,7 +68,7 @@ export default {
 
   data () {
     return {
-      columns: ['User Name', 'Give Bag', 'Receive Bag', 'Actions']
+      columns: ['User Name', 'Give Bag', 'Receive Bag', 'Created At', 'Actions']
     }
   },
 
