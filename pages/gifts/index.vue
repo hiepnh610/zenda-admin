@@ -42,7 +42,10 @@
               </td>
 
               <td>
-                <button class="btn btn-xs btn-danger">
+                <button
+                  class="btn btn-xs btn-danger"
+                  @click.prevent="deleteGift(gift._id)"
+                >
                   Deleted
                 </button>
               </td>
@@ -76,6 +79,12 @@ export default {
 
   mounted () {
     this.$store.dispatch(ACTION.GIFTS)
+  },
+
+  methods: {
+    deleteGift (id) {
+      this.$store.dispatch(ACTION.DELETE_GIFT, id)
+    }
   }
 }
 </script>

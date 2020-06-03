@@ -1,22 +1,33 @@
 export const ACTION = {
-  ACCOUNTS: 'accounts/getAccounts',
+  USERS: 'users/getUsers',
+  DELETE_USER: 'users/deleteUser',
+
   GIFTS: 'gifts/getGifts',
+  DELETE_GIFT: 'gifts/deleteGift',
+
   TRANSACTIONS: 'transactions/getTransactions',
+
   SETTINGS: 'settings/updateSettings'
 }
 
 export const MUTATION = {
   NOTIFICATION: 'notification/setNotification',
   LOADING: 'loading/setLoading',
-  ACCOUNTS: 'accounts/setAccounts',
+
+  USERS: 'users/setUsers',
+  DELETE_USER: 'users/setToDeleteUser',
+
   GIFTS: 'gifts/setGifts',
+  DELETE_GIFT: 'gifts/setToDeleteGift',
+
   TRANSACTIONS: 'transactions/setTransactions',
+
   SETTINGS: 'settings/setToUpdateSettings'
 }
 
 export const GETTER = {
   LOADING: 'loading/getLoading',
-  ACCOUNTS: 'accounts/getAccounts',
+  USERS: 'users/getUsers',
   GIFTS: 'gifts/getGifts',
   TRANSACTIONS: 'transactions/getTransactions',
   SETTINGS: 'settings/getSettings'

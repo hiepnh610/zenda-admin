@@ -47,7 +47,7 @@
 
               <td>
                 <button class="btn btn-xs btn-danger">
-                  Deleted
+                  Refund
                 </button>
               </td>
             </tr>

@@ -33,10 +33,10 @@
         </li>
 
         <li>
-          <nuxt-link to="/accounts">
+          <nuxt-link to="/users">
             <i class="fa fa-user" aria-hidden="true" />
 
-            <span class="nav-label">Accounts</span>
+            <span class="nav-label">Users</span>
           </nuxt-link>
         </li>
 

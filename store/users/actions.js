@@ -2,22 +2,22 @@ import { MUTATION } from '@/constants/name-space'
 import { API } from '@/constants/api'
 
 const actions = {
-  getGifts (context) {
+  getUsers (context) {
     return this.$axios
-      .get(API.GIFTS)
+      .get(API.USERS)
       .then((response) => {
-        context.commit(MUTATION.GIFTS, response.data, {
+        context.commit(MUTATION.USERS, response.data, {
           root: true
         })
       })
       .catch(() => {})
   },
 
-  deleteGift (context, payload) {
+  deleteUser (context, payload) {
     return this.$axios
-      .delete(`${API.GIFT}/${payload}`)
+      .delete(`${API.USER}/${payload}`)
       .then(() => {
-        context.commit(MUTATION.DELETE_GIFT, payload, {
+        context.commit(MUTATION.DELETE_USER, payload, {
           root: true
         })
       })

@@ -1,5 +1,5 @@
 const states = () => ({
-  accounts: []
+  users: []
 })
 
 export default states

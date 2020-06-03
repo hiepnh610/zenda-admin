@@ -27,26 +27,29 @@
             </tr>
           </thead>
 
-          <tbody v-if="accounts">
-            <tr v-for="(account, index) in accounts" :key="index">
+          <tbody v-if="users">
+            <tr v-for="(user, index) in users" :key="index">
               <td>
-                {{ account.display_name }}
+                {{ user.display_name }}
               </td>
 
               <td>
-                {{ account.give_bag }}
+                {{ user.give_bag }}
               </td>
 
               <td>
-                {{ account.receive_bag }}
+                {{ user.receive_bag }}
               </td>
 
               <td>
-                {{ account.created_at }}
+                {{ user.created_at }}
               </td>
 
               <td>
-                <button class="btn btn-xs btn-danger">
+                <button
+                  class="btn btn-xs btn-danger"
+                  @click.prevent="deleteUser(user._id)"
+                >
                   Deleted
                 </button>
               </td>
@@ -64,7 +67,7 @@ import { mapGetters } from 'vuex'
 import { ACTION, GETTER } from '@/constants/name-space'
 
 export default {
-  name: 'Accounts',
+  name: 'Users',
 
   data () {
     return {
@@ -74,12 +77,18 @@ export default {
 
   computed: {
     ...mapGetters({
-      accounts: GETTER.ACCOUNTS
+      users: GETTER.USERS
     })
   },
 
   mounted () {
-    this.$store.dispatch(ACTION.ACCOUNTS)
+    this.$store.dispatch(ACTION.USERS)
+  },
+
+  methods: {
+    deleteUser (id) {
+      this.$store.dispatch(ACTION.DELETE_USER, id)
+    }
   }
 }
 </script>
