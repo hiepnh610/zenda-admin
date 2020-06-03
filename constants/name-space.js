@@ -1,7 +1,8 @@
 export const ACTION = {
   ACCOUNTS: 'accounts/getAccounts',
   GIFTS: 'gifts/getGifts',
-  TRANSACTIONS: 'transactions/getTransactions'
+  TRANSACTIONS: 'transactions/getTransactions',
+  SETTINGS: 'settings/updateSettings'
 }
 
 export const MUTATION = {
@@ -9,12 +10,14 @@ export const MUTATION = {
   LOADING: 'loading/setLoading',
   ACCOUNTS: 'accounts/setAccounts',
   GIFTS: 'gifts/setGifts',
-  TRANSACTIONS: 'transactions/setTransactions'
+  TRANSACTIONS: 'transactions/setTransactions',
+  SETTINGS: 'settings/setToUpdateSettings'
 }
 
 export const GETTER = {
   LOADING: 'loading/getLoading',
   ACCOUNTS: 'accounts/getAccounts',
   GIFTS: 'gifts/getGifts',
-  TRANSACTIONS: 'transactions/getTransactions'
+  TRANSACTIONS: 'transactions/getTransactions',
+  SETTINGS: 'settings/getSettings'
 }

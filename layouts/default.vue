@@ -5,7 +5,9 @@
     <div id="page-wrapper" class="gray-bg dashbard-1">
       <HeaderComponent />
 
-      <nuxt />
+      <div class="wrapper wrapper-content animated fadeInRight">
+        <nuxt />
+      </div>
     </div>
   </div>
 </template>
