@@ -38,11 +38,11 @@
               </td>
 
               <td>
-                {{ transaction.quantity }}
+                {{ transaction.amount }}
               </td>
 
               <td>
-                {{ transaction.created_at }}
+                {{ transaction.createdAt }}
               </td>
 
               <td>

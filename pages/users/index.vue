@@ -42,13 +42,13 @@
               </td>
 
               <td>
-                {{ user.created_at }}
+                {{ user.createdAt }}
               </td>
 
               <td>
                 <button
                   class="btn btn-xs btn-danger"
-                  @click.prevent="deleteUser(user._id)"
+                  @click.prevent="deleteUser(user.id)"
                 >
                   Deleted
                 </button>
