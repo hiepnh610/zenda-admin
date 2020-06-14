@@ -30,11 +30,11 @@
           <tbody v-if="transactions">
             <tr v-for="(transaction, index) in transactions" :key="index">
               <td>
-                {{ transaction.user_request_name }}
+                {{ transaction.user_request }}
               </td>
 
               <td>
-                {{ transaction.user_receive_name }}
+                {{ transaction.user_receive }}
               </td>
 
               <td>
