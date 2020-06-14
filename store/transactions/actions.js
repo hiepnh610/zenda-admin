@@ -11,6 +11,17 @@ const actions = {
         })
       })
       .catch(() => {})
+  },
+
+  deleteTransaction (context, payload) {
+    return this.$axios
+      .delete(`${API.TRANSACTIONS}/${payload}`)
+      .then(() => {
+        context.commit(MUTATION.DELETE_TRANSACTION, payload, {
+          root: true
+        })
+      })
+      .catch(() => {})
   }
 }
 

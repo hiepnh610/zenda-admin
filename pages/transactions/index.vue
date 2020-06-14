@@ -28,7 +28,7 @@
           </thead>
 
           <tbody v-if="transactions">
-            <tr v-for="(transaction, index) in transactions" :key="index">
+            <tr v-for="transaction in transactions" :key="transaction.id">
               <td>
                 {{ transaction.user_request }}
               </td>
@@ -46,8 +46,11 @@
               </td>
 
               <td>
-                <button class="btn btn-xs btn-danger">
-                  Refund
+                <button
+                  class="btn btn-xs btn-danger"
+                  @click="removeTransaction(transaction.id)"
+                >
+                  Remove
                 </button>
               </td>
             </tr>
@@ -80,6 +83,12 @@ export default {
 
   mounted () {
     this.$store.dispatch(ACTION.TRANSACTIONS)
+  },
+
+  methods: {
+    removeTransaction (transactionId) {
+      this.$store.dispatch(ACTION.DELETE_TRANSACTION, transactionId)
+    }
   }
 }
 </script>
