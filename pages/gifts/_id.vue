@@ -8,7 +8,7 @@
 
     <div class="ibox-content">
       <div class="row">
-        <form role="form" @submit.prevent="createGift">
+        <form role="form" @submit.prevent="updateGift">
           <div class="col-sm-6">
             <div class="form-group">
               <label>Gift Name</label>
@@ -53,30 +53,53 @@
 </template>
 
 <script>
-import { ACTION } from '@/constants/name-space'
+import { mapGetters } from 'vuex'
+
+import { ACTION, GETTER } from '@/constants/name-space'
 
 export default {
   name: 'GiftEdit',
 
   data () {
     return {
-      name: null,
+      giftId: this.$route.params.id,
       image: null,
-      quantity: null,
-      points: null
+      name: null,
+      points: null,
+      quantity: null
     }
   },
 
+  computed: {
+    ...mapGetters({
+      giftDetail: GETTER.GIFT_DETAIL
+    })
+  },
+
+  watch: {
+    giftDetail (data) {
+      this.image = data.image || ''
+      this.name = data.name || ''
+      this.points = data.points || ''
+      this.quantity = data.quantity || ''
+    }
+  },
+
+  mounted () {
+    this.$store.dispatch(ACTION.GIFT_DETAIL, this.giftId)
+  },
+
   methods: {
-    createGift () {
+    updateGift () {
       const payload = {
-        name: this.name,
+        id: this.giftId,
         image: this.image,
-        quantity: this.quantity,
-        points: this.points
+        name: this.name,
+        points: this.points,
+        quantity: this.quantity
       }
 
-      this.$store.dispatch(ACTION.CREATE_GIFT, payload)
+      this.$store.dispatch(ACTION.UPDATE_GIFT, payload)
     }
   }
 }

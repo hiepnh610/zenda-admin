@@ -16,8 +16,8 @@ const actions = {
   createGift (context, payload) {
     return this.$axios
       .post(`${API.GIFT}`, { payload })
-      .then(() => {
-        context.commit(MUTATION.CREATE_GIFT, payload, {
+      .then((response) => {
+        context.commit(MUTATION.CREATE_GIFT, response.data, {
           root: true
         })
 
@@ -28,12 +28,8 @@ const actions = {
 
   updateGift (context, payload) {
     return this.$axios
-      .put(`${API.GIFT}`, { payload })
+      .put(`${API.GIFT}/${payload.id}`, payload)
       .then(() => {
-        context.commit(MUTATION.UPDATE_GIFT, payload, {
-          root: true
-        })
-
         this.app.router.push('/gifts')
       })
       .catch(() => {})
@@ -44,6 +40,17 @@ const actions = {
       .delete(`${API.GIFT}/${payload}`)
       .then(() => {
         context.commit(MUTATION.DELETE_GIFT, payload, {
+          root: true
+        })
+      })
+      .catch(() => {})
+  },
+
+  getGiftDetail (context, payload) {
+    return this.$axios
+      .get(`${API.GIFT}/${payload}`)
+      .then((response) => {
+        context.commit(MUTATION.GIFT_DETAIL, response.data, {
           root: true
         })
       })

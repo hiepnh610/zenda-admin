@@ -7,12 +7,12 @@ const mutations = {
     state.gifts = state.gifts.push(payload)
   },
 
-  setToUpdateGift (state, payload) {
-    state.gifts = state.gifts.push(payload)
-  },
-
   setToDeleteGift (state, payload) {
     state.gifts = state.gifts.filter(gift => gift.id !== payload)
+  },
+
+  setToGetGiftDetail (state, payload) {
+    state.giftDetail = payload
   }
 }
 

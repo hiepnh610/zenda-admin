@@ -1,5 +1,6 @@
 const states = () => ({
-  gifts: []
+  gifts: [],
+  giftDetail: {}
 })
 
 export default states
