@@ -13,6 +13,32 @@ const actions = {
       .catch(() => {})
   },
 
+  createGift (context, payload) {
+    return this.$axios
+      .post(`${API.GIFT}`, { payload })
+      .then(() => {
+        context.commit(MUTATION.CREATE_GIFT, payload, {
+          root: true
+        })
+
+        this.app.router.push('/gifts')
+      })
+      .catch(() => {})
+  },
+
+  updateGift (context, payload) {
+    return this.$axios
+      .put(`${API.GIFT}`, { payload })
+      .then(() => {
+        context.commit(MUTATION.UPDATE_GIFT, payload, {
+          root: true
+        })
+
+        this.app.router.push('/gifts')
+      })
+      .catch(() => {})
+  },
+
   deleteGift (context, payload) {
     return this.$axios
       .delete(`${API.GIFT}/${payload}`)

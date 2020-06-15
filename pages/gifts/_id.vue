@@ -2,7 +2,7 @@
   <div class="ibox float-e-margins">
     <div class="ibox-title">
       <h5>
-        Create Gift
+        Edit Gift
       </h5>
     </div>
 
@@ -56,7 +56,7 @@
 import { ACTION } from '@/constants/name-space'
 
 export default {
-  name: 'GiftCreate',
+  name: 'GiftEdit',
 
   data () {
     return {

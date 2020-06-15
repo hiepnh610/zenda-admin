@@ -3,6 +3,8 @@ export const ACTION = {
   DELETE_USER: 'users/deleteUser',
 
   GIFTS: 'gifts/getGifts',
+  CREATE_GIFT: 'gifts/createGift',
+  UPDATE_GIFT: 'gifts/updateGift',
   DELETE_GIFT: 'gifts/deleteGift',
 
   TRANSACTIONS: 'transactions/getTransactions',
@@ -19,6 +21,8 @@ export const MUTATION = {
   DELETE_USER: 'users/setToDeleteUser',
 
   GIFTS: 'gifts/setGifts',
+  CREATE_GIFT: 'gifts/setToCreateGift',
+  UPDATE_GIFT: 'gifts/setToEditGift',
   DELETE_GIFT: 'gifts/setToDeleteGift',
 
   TRANSACTIONS: 'transactions/setTransactions',

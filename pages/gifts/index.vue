@@ -37,6 +37,10 @@
           <tbody v-if="gifts">
             <tr v-for="gift in gifts" :key="gift.id">
               <td>
+                {{ gift.id }}
+              </td>
+
+              <td>
                 <img v-if="gift.image" :src="gift.image" alt="">
               </td>
 
@@ -57,10 +61,17 @@
               </td>
 
               <td>
+                <n-link :to="'/gifts/' + gift.id" class="btn btn-sm btn-warning">
+                  <i class="fa fa-pencil m-r-xs" />
+                  Edit
+                </n-link>
+
                 <button
-                  class="btn btn-xs btn-danger"
+                  class="btn btn-sm btn-danger"
                   @click.prevent="deleteGift(gift.id)"
                 >
+                  <i class="fa fa-trash-o m-r-xs" />
+
                   Deleted
                 </button>
               </td>
@@ -99,7 +110,9 @@ export default {
   methods: {
     deleteGift (id) {
       this.$store.dispatch(ACTION.DELETE_GIFT, id)
-    }
+    },
+
+    editGift (id) {}
   }
 }
 </script>
