@@ -2,6 +2,13 @@
   <div class="ibox">
     <div class="ibox-content">
       <div class="row m-b-sm">
+        <div class="col-sm-3">
+          <n-link to="/gifts/create" class="btn btn-primary">
+            <i class="fa fa-plus m-r-xs" />
+            Create
+          </n-link>
+        </div>
+
         <div class="col-sm-3 pull-right">
           <div class="input-group">
             <input
@@ -28,23 +35,31 @@
           </thead>
 
           <tbody v-if="gifts">
-            <tr v-for="(gift, index) in gifts" :key="index">
+            <tr v-for="gift in gifts" :key="gift.id">
               <td>
-                {{ gift.gift_name }}
+                <img v-if="gift.image" :src="gift.image" alt="">
               </td>
 
               <td>
-                {{ gift.gift_link }}
+                {{ gift.name }}
               </td>
 
               <td>
-                {{ gift.created_at }}
+                {{ gift.quantity }}
+              </td>
+
+              <td>
+                {{ gift.points }}
+              </td>
+
+              <td>
+                {{ gift.createdAt }}
               </td>
 
               <td>
                 <button
                   class="btn btn-xs btn-danger"
-                  @click.prevent="deleteGift(gift._id)"
+                  @click.prevent="deleteGift(gift.id)"
                 >
                   Deleted
                 </button>
@@ -67,7 +82,7 @@ export default {
 
   data () {
     return {
-      columns: ['Gift Name', 'Gift Link', 'Created At', 'Actions']
+      columns: ['ID', 'Image', 'Name', 'Quantity', 'Points', 'Created At', '']
     }
   },
 

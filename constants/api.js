@@ -5,6 +5,7 @@ export const API = {
   GIFT: '/api/gift',
   GIFTS: '/api/gifts',
 
+  TRANSACTION: '/api/transaction',
   TRANSACTIONS: '/api/transactions',
   SETTINGS: '/api/settings'
 }

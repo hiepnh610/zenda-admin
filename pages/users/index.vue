@@ -50,7 +50,7 @@
                   class="btn btn-xs btn-danger"
                   @click.prevent="deleteUser(user.id)"
                 >
-                  Deleted
+                  Remove
                 </button>
               </td>
             </tr>

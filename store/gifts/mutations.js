@@ -4,7 +4,7 @@ const mutations = {
   },
 
   setToDeleteGift (state, payload) {
-    state.gifts = state.gifts.filter(item => item._id !== payload)
+    state.gifts = state.gifts.filter(gift => gift.id !== payload)
   }
 }
 

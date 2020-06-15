@@ -15,7 +15,7 @@ const actions = {
 
   deleteTransaction (context, payload) {
     return this.$axios
-      .delete(`${API.TRANSACTIONS}/${payload}`)
+      .delete(`${API.TRANSACTION}/${payload}`)
       .then(() => {
         context.commit(MUTATION.DELETE_TRANSACTION, payload, {
           root: true
