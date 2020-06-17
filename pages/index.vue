@@ -1,23 +1,24 @@
 <template>
   <div class="middle-box text-center loginscreen animated fadeInDown">
-    <form class="m-t" role="form" action="index.html">
+    <form class="m-t" role="form" @submit.prevent="login">
       <div class="form-group">
         <input
-          type="email"
+          v-model="username"
+          type="text"
           class="form-control"
           placeholder="Username"
-          required=""
         >
       </div>
 
       <div class="form-group">
         <input
+          v-model="password"
           type="password"
           class="form-control"
           placeholder="Password"
-          required=""
         >
       </div>
+
       <button type="submit" class="btn btn-primary block full-width m-b">
         Login
       </button>
@@ -28,6 +29,39 @@
 <script>
 
 export default {
-  name: 'Header'
+  name: 'Header',
+
+  middleware: ['notAuthenticated'],
+
+  layout: 'login',
+
+  data () {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+
+  methods: {
+    async login () {
+      try {
+        const payload = {
+          username: this.username,
+          password: this.password
+        }
+
+        await this.$auth.loginWith('local', {
+          data: payload
+        })
+
+        const token = this.$auth.getToken('local')
+
+        this.$store.commit('setToken', token)
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.log(e)
+      }
+    }
+  }
 }
 </script>

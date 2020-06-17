@@ -78,7 +78,7 @@ export default {
   },
 
   router: {
-    // middleware: ['auth']
+    middleware: ['auth']
   },
 
   server: {
@@ -95,23 +95,12 @@ export default {
 
     strategies: {
       local: {
-        login: {
-          url: '/auth/login',
-          method: 'post',
-          propertyName: 'token'
+        endpoints: {
+          login: { url: '/api/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/api/logout', method: 'post' },
+          user: { url: '/api/admin', method: 'get', propertyName: false }
         },
-
-        logout: {
-          url: '/auth/logout',
-          method: 'post'
-        },
-
-        user: {
-          url: '/auth/user-info',
-          method: 'get',
-          propertyName: false
-        }
-
+        tokenType: false
       }
     }
   }

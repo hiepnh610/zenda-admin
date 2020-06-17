@@ -1,5 +1,8 @@
-export default function ({ store, redirect }) {
-  if (store.state.auth.loggedIn) {
-    return redirect('/dashboard')
+export default function ({ store, route, redirect }) {
+  const getState = store.state
+  const token = getState.token
+
+  if (!getState.auth.loggedIn || !token) {
+    return redirect('/')
   }
 }

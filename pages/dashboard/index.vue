@@ -6,7 +6,9 @@
 
 <script>
 export default {
-  name: 'Dashboard'
+  name: 'Dashboard',
+
+  middleware: ['authenticated']
 }
 </script>
 

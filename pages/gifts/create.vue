@@ -58,6 +58,8 @@ import { ACTION } from '@/constants/name-space'
 export default {
   name: 'GiftCreate',
 
+  middleware: ['authenticated'],
+
   data () {
     return {
       name: null,

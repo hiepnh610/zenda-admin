@@ -60,6 +60,8 @@ import { ACTION, GETTER } from '@/constants/name-space'
 export default {
   name: 'GiftEdit',
 
+  middleware: ['authenticated'],
+
   data () {
     return {
       giftId: this.$route.params.id,

@@ -1,5 +1,5 @@
 <template>
-  <div class="row border-bottom">
+  <div v-if="isAuthenticated" class="row border-bottom">
     <nav
       class="navbar navbar-static-top"
       role="navigation"
@@ -17,7 +17,7 @@
 
       <ul class="nav navbar-top-links navbar-right">
         <li>
-          <a href="#">
+          <a href="#" @click.prevent="logout">
             <i class="fa fa-sign-out" />
             Log out
           </a>
@@ -46,6 +46,15 @@ export default {
   methods: {
     toggleSidebar () {
       this.isCollapse = !this.isCollapse
+    },
+
+    async logout () {
+      try {
+        await this.$auth.logout()
+      } catch (e) {
+        // eslint-disable-next-line no-console
+        console.log(e)
+      }
     }
   },
 

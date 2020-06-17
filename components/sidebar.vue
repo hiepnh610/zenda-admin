@@ -1,5 +1,9 @@
 <template>
-  <nav class="navbar-default navbar-static-side" role="navigation">
+  <nav
+    v-if="isAuthenticated"
+    class="navbar-default navbar-static-side"
+    role="navigation"
+  >
     <div class="sidebar-collapse">
       <ul id="side-menu" class="nav metismenu">
         <li class="nav-header">

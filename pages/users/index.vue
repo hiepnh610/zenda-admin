@@ -69,6 +69,8 @@ import { ACTION, GETTER } from '@/constants/name-space'
 export default {
   name: 'Users',
 
+  middleware: ['authenticated'],
+
   data () {
     return {
       columns: ['User Name', 'Give Bag', 'Receive Bag', 'Created At', 'Actions']

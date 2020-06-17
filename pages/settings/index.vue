@@ -42,6 +42,8 @@ import { ACTION } from '@/constants/name-space'
 export default {
   name: 'Settings',
 
+  middleware: ['authenticated'],
+
   data () {
     return {
       quantity: null
