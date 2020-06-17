@@ -51,10 +51,7 @@ export default {
     async logout () {
       try {
         await this.$auth.logout()
-      } catch (e) {
-        // eslint-disable-next-line no-console
-        console.log(e)
-      }
+      } catch (e) {}
     }
   },
 
