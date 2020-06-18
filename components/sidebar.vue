@@ -53,6 +53,14 @@
         </li>
 
         <li>
+          <nuxt-link to="/gift-exchange">
+            <i class="fa fa-gift" aria-hidden="true" />
+
+            <span class="nav-label">Gift Exchange</span>
+          </nuxt-link>
+        </li>
+
+        <li>
           <nuxt-link to="/transactions">
             <i class="fa fa-credit-card" aria-hidden="true" />
 
