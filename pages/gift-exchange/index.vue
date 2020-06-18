@@ -78,12 +78,12 @@ export default {
 
   computed: {
     ...mapGetters({
-      gifts: GETTER.GIFT_REQUEST
+      gifts: GETTER.GIFT_EXCHANGE
     })
   },
 
   mounted () {
-    this.$store.dispatch(ACTION.GIFT_REQUEST)
+    this.$store.dispatch(ACTION.GIFT_EXCHANGE)
   }
 }
 </script>
