@@ -67,14 +67,6 @@
             <span class="nav-label">Transactions</span>
           </nuxt-link>
         </li>
-
-        <li>
-          <nuxt-link to="/settings">
-            <i class="fa fa-cog" aria-hidden="true" />
-
-            <span class="nav-label">Settings</span>
-          </nuxt-link>
-        </li>
       </ul>
     </div>
   </nav>

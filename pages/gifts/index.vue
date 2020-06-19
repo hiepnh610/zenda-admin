@@ -3,24 +3,14 @@
     <div class="ibox-content">
       <div class="row m-b-sm">
         <div class="col-sm-3">
-          <n-link to="/gifts/create" class="btn btn-primary">
+          <n-link
+            v-if="gifts.length < 10"
+            to="/gifts/create"
+            class="btn btn-sm btn-primary"
+          >
             <i class="fa fa-plus m-r-xs" />
             Create
           </n-link>
-        </div>
-
-        <div class="col-sm-3 pull-right">
-          <div class="input-group">
-            <input
-              type="text"
-              placeholder="Search"
-              class="input-sm form-control"
-            >
-
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-sm btn-primary">Go!</button>
-            </span>
-          </div>
         </div>
       </div>
 
@@ -35,9 +25,9 @@
           </thead>
 
           <tbody v-if="gifts">
-            <tr v-for="gift in gifts" :key="gift.id">
+            <tr v-for="(gift, index) in gifts" :key="gift.id">
               <td>
-                {{ gift.id }}
+                {{ index + 1 }}
               </td>
 
               <td>

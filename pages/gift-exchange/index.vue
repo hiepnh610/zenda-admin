@@ -1,22 +1,6 @@
 <template>
   <div class="ibox">
     <div class="ibox-content">
-      <div class="row m-b-sm">
-        <div class="col-sm-3 pull-right">
-          <div class="input-group">
-            <input
-              type="text"
-              placeholder="Search"
-              class="input-sm form-control"
-            >
-
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-sm btn-primary">Go!</button>
-            </span>
-          </div>
-        </div>
-      </div>
-
       <div class="table-responsive">
         <table class="table table-striped">
           <thead>
@@ -46,6 +30,14 @@
               </td>
 
               <td>
+                <div class="toggle" @click.prevent="updateStatus(gift.id)">
+                  <i v-if="gift.status" class="fa fa-toggle-on" />
+
+                  <i v-else class="fa fa-toggle-off" />
+                </div>
+              </td>
+
+              <td>
                 <button class="btn btn-sm btn-danger">
                   <i class="fa fa-trash-o m-r-xs" />
 
@@ -72,7 +64,7 @@ export default {
 
   data () {
     return {
-      columns: ['ID', 'Image', 'Gift', 'Created At', '']
+      columns: ['ID', 'Image', 'Gift', 'Created At', 'Status', '']
     }
   },
 
@@ -84,6 +76,17 @@ export default {
 
   mounted () {
     this.$store.dispatch(ACTION.GIFT_EXCHANGE)
+  },
+
+  methods: {
+    updateStatus (id) {}
   }
 }
 </script>
+
+<style lang="scss" scoped>
+::v-deep .toggle .fa {
+  cursor: pointer;
+  font-size: 20px;
+}
+</style>
