@@ -43,7 +43,10 @@
               </td>
 
               <td>
-                <button class="btn btn-sm btn-danger">
+                <button
+                  class="btn btn-sm btn-danger"
+                  @click.prevent="deleteGift(gift.id)"
+                >
                   <i class="fa fa-trash-o m-r-xs" />
 
                   Deleted
@@ -87,6 +90,10 @@ export default {
     updateStatus (id, status) {
       const payload = { id, status }
       this.$store.dispatch(ACTION.GIFT_EXCHANGE_UPDATE_STATUS, payload)
+    },
+
+    deleteGift (id) {
+      this.$store.dispatch(ACTION.GIFT_EXCHANGE_DELETE_STATUS, id)
     }
   }
 }

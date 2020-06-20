@@ -22,6 +22,17 @@ const actions = {
         })
       })
       .catch(() => {})
+  },
+
+  deleteGift (context, payload) {
+    return this.$axios
+      .delete(`${API.GIFT_EXCHANGE}/${payload}`)
+      .then(() => {
+        context.commit(MUTATION.GIFT_EXCHANGE_DELETE_STATUS, payload, {
+          root: true
+        })
+      })
+      .catch(() => {})
   }
 }
 

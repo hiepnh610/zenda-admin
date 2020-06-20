@@ -6,6 +6,10 @@ const mutations = {
   setToUpdateGift (state, payload) {
     const gift = state.gifts.find(e => e.id === payload.id)
     gift.status = !gift.status
+  },
+
+  setToDeleteGift (state, payload) {
+    state.gifts = state.gifts.filter(gift => gift.id !== payload)
   }
 }
 
