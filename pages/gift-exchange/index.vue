@@ -30,10 +30,15 @@
               </td>
 
               <td>
-                <div class="toggle" @click.prevent="updateStatus(gift.id)">
-                  <i v-if="gift.status" class="fa fa-toggle-on" />
-
-                  <i v-else class="fa fa-toggle-off" />
+                <div class="toggle">
+                  <i
+                    class="fa text-navy"
+                    :class="{
+                      'fa-toggle-on': gift.status,
+                      'fa-toggle-off': !gift.status
+                    }"
+                    @click.prevent="updateStatus(gift.id, !gift.status)"
+                  />
                 </div>
               </td>
 
@@ -79,7 +84,10 @@ export default {
   },
 
   methods: {
-    updateStatus (id) {}
+    updateStatus (id, status) {
+      const payload = { id, status }
+      this.$store.dispatch(ACTION.GIFT_EXCHANGE_UPDATE_STATUS, payload)
+    }
   }
 }
 </script>
@@ -87,6 +95,6 @@ export default {
 <style lang="scss" scoped>
 ::v-deep .toggle .fa {
   cursor: pointer;
-  font-size: 20px;
+  font-size: 24px;
 }
 </style>

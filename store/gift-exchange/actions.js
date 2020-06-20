@@ -11,6 +11,17 @@ const actions = {
         })
       })
       .catch(() => {})
+  },
+
+  updateGift (context, payload) {
+    return this.$axios
+      .put(`${API.GIFT_EXCHANGE}/${payload.id}`, payload)
+      .then((response) => {
+        context.commit(MUTATION.GIFT_EXCHANGE_UPDATE_STATUS, payload, {
+          root: true
+        })
+      })
+      .catch(() => {})
   }
 }
 

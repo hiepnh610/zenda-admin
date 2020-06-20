@@ -9,6 +9,7 @@ export const ACTION = {
   GIFT_DETAIL: 'gifts/getGiftDetail',
 
   GIFT_EXCHANGE: 'gift-exchange/getGifts',
+  GIFT_EXCHANGE_UPDATE_STATUS: 'gift-exchange/updateGift',
 
   TRANSACTIONS: 'transactions/getTransactions',
   DELETE_TRANSACTION: 'transactions/deleteTransaction',
@@ -29,6 +30,7 @@ export const MUTATION = {
   GIFT_DETAIL: 'gifts/setToGetGiftDetail',
 
   GIFT_EXCHANGE: 'gift-exchange/setGifts',
+  GIFT_EXCHANGE_UPDATE_STATUS: 'gift-exchange/setToUpdateGift',
 
   TRANSACTIONS: 'transactions/setTransactions',
   DELETE_TRANSACTION: 'transactions/setToDeleteTransaction',
