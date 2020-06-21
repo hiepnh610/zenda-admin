@@ -26,6 +26,10 @@
               </td>
 
               <td>
+                {{ transaction.message }}
+              </td>
+
+              <td>
                 {{ transaction.createdAt }}
               </td>
 
@@ -57,7 +61,7 @@ export default {
 
   data () {
     return {
-      columns: ['User Request', 'User Receive', 'Quantity', 'Created At', 'Actions']
+      columns: ['User Request', 'User Receive', 'Amount', 'Message', 'Created At', 'Actions']
     }
   },
 
