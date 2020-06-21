@@ -86,10 +86,10 @@ export default {
   },
 
   auth: {
+    cookie: false,
     redirect: {
       login: '/',
       logout: '/',
-      callback: '/',
       home: '/dashboard'
     },
 
@@ -97,7 +97,6 @@ export default {
       local: {
         endpoints: {
           login: { url: '/api/login', method: 'post', propertyName: 'token' },
-          logout: { url: '/api/logout', method: 'post' },
           user: { url: '/api/admin', method: 'get', propertyName: false }
         },
         tokenType: false
