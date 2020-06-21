@@ -48,10 +48,9 @@ export default {
       this.isCollapse = !this.isCollapse
     },
 
-    async logout () {
-      try {
-        await this.$auth.logout()
-      } catch (e) {}
+    logout () {
+      localStorage.removeItem('auth._token.local')
+      this.$store.commit('setAuth', false)
     }
   },
 

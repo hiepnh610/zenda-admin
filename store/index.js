@@ -9,6 +9,10 @@ export const state = () => ({
 export const mutations = {
   setToken (state, payload) {
     state.token = payload
+  },
+
+  setAuth (state, payload) {
+    state.auth.loggedIn = payload
   }
 }
 

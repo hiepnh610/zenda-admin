@@ -6,7 +6,9 @@
 
 <script>
 export default {
-  name: 'Error'
+  name: 'Error',
+
+  middleware: ['notAuthenticated']
 }
 </script>
 
