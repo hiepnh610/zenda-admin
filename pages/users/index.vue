@@ -26,7 +26,7 @@
               </td>
 
               <td>
-                {{ user.createdAt }}
+                {{ user.createdAt | moment('DD/MM/YYYY HH:mm:ss') }}
               </td>
 
               <td>

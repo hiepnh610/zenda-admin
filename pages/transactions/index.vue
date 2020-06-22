@@ -30,7 +30,7 @@
               </td>
 
               <td>
-                {{ transaction.createdAt }}
+                {{ transaction.createdAt | moment('DD/MM/YYYY HH:mm:ss') }}
               </td>
 
               <td>

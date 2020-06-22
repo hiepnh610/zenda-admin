@@ -47,7 +47,7 @@
               </td>
 
               <td>
-                {{ gift.createdAt }}
+                {{ gift.createdAt | moment('DD/MM/YYYY HH:mm:ss') }}
               </td>
 
               <td>
