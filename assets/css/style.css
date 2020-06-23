@@ -2459,14 +2459,14 @@ label.error {
   background-image: none !important;
 }
 .toasted-container > .toasted:before {
-  position: fixed;
+  position: relative;
   font-family: FontAwesome;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 14px;
   float: left;
-  color: #FFF;
+  color: #fff;
   padding-right: 0.5em;
-  margin: auto 0.5em auto -1.5em;
+  margin: 0;
 }
 .toasted-container > .toasted.warning:before {
   content: "\f0e7";

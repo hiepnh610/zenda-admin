@@ -1,5 +1,7 @@
 import { MUTATION } from '@/constants/name-space'
 import { API } from '@/constants/api'
+import { STATUS_TOAST } from '@/constants/constants'
+import showToastError from '@/utils/toast'
 
 const actions = {
   getTransactions (context) {
@@ -10,7 +12,9 @@ const actions = {
           root: true
         })
       })
-      .catch(() => {})
+      .catch((error) => {
+        showToastError(STATUS_TOAST.ERROR, error)
+      })
   },
 
   deleteTransaction (context, payload) {
@@ -21,7 +25,9 @@ const actions = {
           root: true
         })
       })
-      .catch(() => {})
+      .catch((error) => {
+        showToastError(STATUS_TOAST.ERROR, error)
+      })
   }
 }
 

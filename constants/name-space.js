@@ -15,7 +15,9 @@ export const ACTION = {
   TRANSACTIONS: 'transactions/getTransactions',
   DELETE_TRANSACTION: 'transactions/deleteTransaction',
 
-  SETTINGS: 'settings/updateSettings'
+  SETTINGS: 'settings/updateSettings',
+
+  TOASTED: 'toast/showToast'
 }
 
 export const MUTATION = {
@@ -37,7 +39,9 @@ export const MUTATION = {
   TRANSACTIONS: 'transactions/setTransactions',
   DELETE_TRANSACTION: 'transactions/setToDeleteTransaction',
 
-  SETTINGS: 'settings/setToUpdateSettings'
+  SETTINGS: 'settings/setToUpdateSettings',
+
+  TOASTED: 'toast/setToShowToast'
 }
 
 export const GETTER = {
@@ -47,5 +51,6 @@ export const GETTER = {
   GIFT_DETAIL: 'gifts/getGiftDetail',
   GIFT_EXCHANGE: 'gift-exchange/getGifts',
   TRANSACTIONS: 'transactions/getTransactions',
-  SETTINGS: 'settings/getSettings'
+  SETTINGS: 'settings/getSettings',
+  TOASTED: 'toast/getToast'
 }
