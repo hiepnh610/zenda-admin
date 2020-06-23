@@ -19,8 +19,14 @@
         >
       </div>
 
-      <button type="submit" class="btn btn-primary block full-width m-b">
+      <button
+        type="submit"
+        class="btn btn-primary block full-width m-b"
+        :disabled="loading"
+      >
         Login
+
+        <i v-if="loading" class="fa fa-spinner fa-spin fa-fw" />
       </button>
     </form>
   </div>
@@ -38,12 +44,14 @@ export default {
   data () {
     return {
       username: '',
-      password: ''
+      password: '',
+      loading: false
     }
   },
 
   methods: {
     async login () {
+      this.loading = true
       try {
         const payload = {
           username: this.username,
@@ -57,7 +65,11 @@ export default {
         const token = this.$auth.getToken('local')
 
         this.$store.commit('setToken', token)
-      } catch (e) {}
+
+        this.loading = false
+      } catch (e) {
+        this.loading = false
+      }
     }
   }
 }

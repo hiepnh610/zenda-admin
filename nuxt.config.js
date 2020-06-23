@@ -41,7 +41,8 @@ export default {
   */
   plugins: [
     '~/plugins/axios',
-    '~/plugins/vue-moment.js'
+    '~/plugins/vue-moment.js',
+    '~/plugins/vue-toasted.js'
   ],
   /*
   ** Nuxt.js dev-modules
