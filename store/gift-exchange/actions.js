@@ -1,5 +1,7 @@
 import { MUTATION } from '@/constants/name-space'
 import { API } from '@/constants/api'
+import { STATUS_TOAST } from '@/constants/constants'
+import showToastError from '@/utils/toast'
 
 const actions = {
   getGifts (context) {
@@ -10,18 +12,22 @@ const actions = {
           root: true
         })
       })
-      .catch(() => {})
+      .catch((error) => {
+        showToastError(STATUS_TOAST.ERROR, error)
+      })
   },
 
   updateGift (context, payload) {
     return this.$axios
       .put(`${API.GIFT_EXCHANGE}/${payload.id}`, payload)
-      .then((response) => {
+      .then(() => {
         context.commit(MUTATION.GIFT_EXCHANGE_UPDATE_STATUS, payload, {
           root: true
         })
       })
-      .catch(() => {})
+      .catch((error) => {
+        showToastError(STATUS_TOAST.ERROR, error)
+      })
   },
 
   deleteGift (context, payload) {
@@ -32,7 +38,9 @@ const actions = {
           root: true
         })
       })
-      .catch(() => {})
+      .catch((error) => {
+        showToastError(STATUS_TOAST.ERROR, error)
+      })
   }
 }
 

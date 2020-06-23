@@ -1,5 +1,7 @@
 import { MUTATION } from '@/constants/name-space'
 import { API } from '@/constants/api'
+import { STATUS_TOAST } from '@/constants/constants'
+import showToastError from '@/utils/toast'
 
 const actions = {
   getGifts (context) {
@@ -10,7 +12,9 @@ const actions = {
           root: true
         })
       })
-      .catch(() => {})
+      .catch((error) => {
+        showToastError(STATUS_TOAST.ERROR, error)
+      })
   },
 
   createGift (context, payload) {
@@ -23,7 +27,9 @@ const actions = {
 
         this.app.router.push('/gifts')
       })
-      .catch(() => {})
+      .catch((error) => {
+        showToastError(STATUS_TOAST.ERROR, error)
+      })
   },
 
   updateGift (context, payload) {
@@ -32,7 +38,9 @@ const actions = {
       .then(() => {
         this.app.router.push('/gifts')
       })
-      .catch(() => {})
+      .catch((error) => {
+        showToastError(STATUS_TOAST.ERROR, error)
+      })
   },
 
   deleteGift (context, payload) {
@@ -43,7 +51,9 @@ const actions = {
           root: true
         })
       })
-      .catch(() => {})
+      .catch((error) => {
+        showToastError(STATUS_TOAST.ERROR, error)
+      })
   },
 
   getGiftDetail (context, payload) {
@@ -54,7 +64,9 @@ const actions = {
           root: true
         })
       })
-      .catch(() => {})
+      .catch((error) => {
+        showToastError(STATUS_TOAST.ERROR, error)
+      })
   }
 }
 

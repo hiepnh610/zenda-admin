@@ -82,8 +82,8 @@ export default {
     giftDetail (data) {
       this.image = data.image || ''
       this.name = data.name || ''
-      this.points = data.points || ''
-      this.quantity = data.quantity || ''
+      this.points = data.points || 0
+      this.quantity = data.quantity || 0
     }
   },
 

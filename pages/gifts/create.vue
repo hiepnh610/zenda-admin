@@ -42,8 +42,14 @@
           </div>
 
           <div class="col-sm-12">
-            <button class="btn btn-sm btn-primary" type="submit">
+            <button
+              class="btn btn-sm btn-primary"
+              type="submit"
+              :disabled="loading"
+            >
               <strong>Save</strong>
+
+              <i v-if="loading" class="fa fa-spinner fa-spin fa-fw" />
             </button>
           </div>
         </form>
@@ -65,12 +71,15 @@ export default {
       name: null,
       image: null,
       quantity: null,
-      points: null
+      points: null,
+      loading: false
     }
   },
 
   methods: {
     createGift () {
+      this.loading = true
+
       const payload = {
         name: this.name,
         image: this.image,
