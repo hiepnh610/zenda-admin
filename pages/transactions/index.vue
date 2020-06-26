@@ -11,8 +11,8 @@
             </tr>
           </thead>
 
-          <tbody v-if="transactions">
-            <tr v-for="transaction in transactions" :key="transaction.id">
+          <tbody v-if="transactions.rows">
+            <tr v-for="transaction in transactions.rows" :key="transaction.id">
               <td>
                 {{ transaction.user_request }}
               </td>
@@ -43,6 +43,30 @@
               </td>
             </tr>
           </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="6" class="footable-visible">
+                <ul class="pagination">
+                  <li class="footable-page-arrow disabled">
+                    <a data-page="prev" href="#prev">‹</a>
+                  </li>
+
+                  <li class="footable-page active">
+                    <a data-page="0" href="#">1</a>
+                  </li>
+
+                  <li class="footable-page">
+                    <a data-page="1" href="#">2</a>
+                  </li>
+
+                  <li class="footable-page-arrow">
+                    <a data-page="next" href="#next">›</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
@@ -61,7 +85,7 @@ export default {
 
   data () {
     return {
-      columns: ['User Request', 'User Receive', 'Amount', 'Message', 'Created At', 'Actions']
+      columns: ['User Request', 'User Receive', 'Amount', 'Message', 'Created At', '']
     }
   },
 

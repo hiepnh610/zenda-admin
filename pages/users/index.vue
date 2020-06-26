@@ -11,8 +11,8 @@
             </tr>
           </thead>
 
-          <tbody v-if="users">
-            <tr v-for="(user, index) in users" :key="index">
+          <tbody v-if="users.rows">
+            <tr v-for="user in users.rows" :key="user.id">
               <td>
                 {{ user.display_name }}
               </td>

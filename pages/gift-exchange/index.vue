@@ -11,8 +11,8 @@
             </tr>
           </thead>
 
-          <tbody v-if="gifts">
-            <tr v-for="gift in gifts" :key="gift.id">
+          <tbody v-if="gifts.rows">
+            <tr v-for="gift in gifts.rows" :key="gift.id">
               <td>
                 {{ gift.id }}
               </td>
@@ -54,6 +54,30 @@
               </td>
             </tr>
           </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="6" class="footable-visible">
+                <ul class="pagination">
+                  <li class="footable-page-arrow disabled">
+                    <a data-page="prev" href="#prev">‹</a>
+                  </li>
+
+                  <li class="footable-page active">
+                    <a data-page="0" href="#">1</a>
+                  </li>
+
+                  <li class="footable-page">
+                    <a data-page="1" href="#">2</a>
+                  </li>
+
+                  <li class="footable-page-arrow">
+                    <a data-page="next" href="#next">›</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>

@@ -24,12 +24,8 @@
             </tr>
           </thead>
 
-          <tbody v-if="gifts">
-            <tr v-for="(gift, index) in gifts" :key="gift.id">
-              <td>
-                {{ index + 1 }}
-              </td>
-
+          <tbody v-if="gifts.rows">
+            <tr v-for="gift in gifts.rows" :key="gift.id">
               <td>
                 <img v-if="gift.image" :src="gift.image" alt="">
               </td>
@@ -55,18 +51,33 @@
                   <i class="fa fa-pencil m-r-xs" />
                   Edit
                 </n-link>
-
-                <button
-                  class="btn btn-sm btn-danger"
-                  @click.prevent="deleteGift(gift.id)"
-                >
-                  <i class="fa fa-trash-o m-r-xs" />
-
-                  Deleted
-                </button>
               </td>
             </tr>
           </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="6" class="footable-visible">
+                <ul class="pagination">
+                  <li class="footable-page-arrow disabled">
+                    <a data-page="prev" href="#prev">‹</a>
+                  </li>
+
+                  <li class="footable-page active">
+                    <a data-page="0" href="#">1</a>
+                  </li>
+
+                  <li class="footable-page">
+                    <a data-page="1" href="#">2</a>
+                  </li>
+
+                  <li class="footable-page-arrow">
+                    <a data-page="next" href="#next">›</a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
@@ -85,7 +96,7 @@ export default {
 
   data () {
     return {
-      columns: ['ID', 'Image', 'Name', 'Quantity', 'Points', 'Created At', '']
+      columns: ['Image', 'Name', 'Quantity', 'Points', 'Created At', '']
     }
   },
 
