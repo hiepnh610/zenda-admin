@@ -4,9 +4,9 @@ import { STATUS_TOAST } from '@/constants/constants'
 import showToast from '@/utils/toast'
 
 const actions = {
-  getTransactions (context) {
+  getTransactions (context, payload) {
     return this.$axios
-      .get(API.TRANSACTIONS)
+      .get(`${API.TRANSACTIONS}?offset=${payload}`)
       .then((response) => {
         context.commit(MUTATION.TRANSACTIONS, response.data, {
           root: true

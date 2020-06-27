@@ -4,7 +4,7 @@
       <div class="row m-b-sm">
         <div class="col-sm-3">
           <n-link
-            v-if="gifts.rows && gifts.rows.length < 10"
+            v-if="gifts.count < 10"
             to="/gifts/create"
             class="btn btn-sm btn-primary"
           >
@@ -55,24 +55,21 @@
             </tr>
           </tbody>
 
-          <tfoot>
+          <tfoot v-if="gifts.rows">
             <tr>
               <td colspan="6" class="footable-visible">
                 <ul class="pagination">
-                  <li class="footable-page-arrow disabled">
-                    <a data-page="prev" href="#prev">‹</a>
-                  </li>
-
-                  <li class="footable-page active">
-                    <a data-page="0" href="#">1</a>
-                  </li>
-
-                  <li class="footable-page">
-                    <a data-page="1" href="#">2</a>
-                  </li>
-
-                  <li class="footable-page-arrow">
-                    <a data-page="next" href="#next">›</a>
+                  <li
+                    v-for="index in getLengthPagination()"
+                    :key="index"
+                    class="footable-page"
+                  >
+                    <a
+                      href="#"
+                      @click.prevent="changePagination(index)"
+                    >
+                      {{ index }}
+                    </a>
                   </li>
                 </ul>
               </td>
@@ -107,7 +104,17 @@ export default {
   },
 
   mounted () {
-    this.$store.dispatch(ACTION.GIFTS)
+    this.$store.dispatch(ACTION.GIFTS, 0)
+  },
+
+  methods: {
+    changePagination (offset) {
+      this.$store.dispatch(ACTION.GIFTS, (offset - 1) * 5)
+    },
+
+    getLengthPagination () {
+      return Math.ceil(this.gifts.count / 5)
+    }
   }
 }
 </script>

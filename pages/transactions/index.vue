@@ -44,24 +44,21 @@
             </tr>
           </tbody>
 
-          <tfoot>
+          <tfoot v-if="transactions.rows">
             <tr>
-              <td colspan="6" class="footable-visible">
+              <td colspan="5" class="footable-visible">
                 <ul class="pagination">
-                  <li class="footable-page-arrow disabled">
-                    <a data-page="prev" href="#prev">‹</a>
-                  </li>
-
-                  <li class="footable-page active">
-                    <a data-page="0" href="#">1</a>
-                  </li>
-
-                  <li class="footable-page">
-                    <a data-page="1" href="#">2</a>
-                  </li>
-
-                  <li class="footable-page-arrow">
-                    <a data-page="next" href="#next">›</a>
+                  <li
+                    v-for="index in getLengthPagination()"
+                    :key="index"
+                    class="footable-page"
+                  >
+                    <a
+                      href="#"
+                      @click.prevent="changePagination(index)"
+                    >
+                      {{ index }}
+                    </a>
                   </li>
                 </ul>
               </td>
@@ -96,12 +93,20 @@ export default {
   },
 
   mounted () {
-    this.$store.dispatch(ACTION.TRANSACTIONS)
+    this.$store.dispatch(ACTION.TRANSACTIONS, 0)
   },
 
   methods: {
     removeTransaction (transactionId) {
       this.$store.dispatch(ACTION.DELETE_TRANSACTION, transactionId)
+    },
+
+    changePagination (offset) {
+      this.$store.dispatch(ACTION.TRANSACTIONS, (offset - 1) * 5)
+    },
+
+    getLengthPagination () {
+      return Math.ceil(this.transactions.count / 5)
     }
   }
 }

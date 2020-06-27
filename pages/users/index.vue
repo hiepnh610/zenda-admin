@@ -32,13 +32,34 @@
               <td>
                 <button
                   class="btn btn-xs btn-danger"
-                  @click.prevent="deleteUser(user.id)"
+                  @click.prevent="removeUser(user.id)"
                 >
                   Remove
                 </button>
               </td>
             </tr>
           </tbody>
+
+          <tfoot v-if="users.rows">
+            <tr>
+              <td colspan="5" class="footable-visible">
+                <ul class="pagination">
+                  <li
+                    v-for="index in getLengthPagination()"
+                    :key="index"
+                    class="footable-page"
+                  >
+                    <a
+                      href="#"
+                      @click.prevent="changePagination(index)"
+                    >
+                      {{ index }}
+                    </a>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </div>
@@ -68,12 +89,20 @@ export default {
   },
 
   mounted () {
-    this.$store.dispatch(ACTION.USERS)
+    this.$store.dispatch(ACTION.USERS, 0)
   },
 
   methods: {
-    deleteUser (id) {
+    removeUser (id) {
       this.$store.dispatch(ACTION.DELETE_USER, id)
+    },
+
+    changePagination (offset) {
+      this.$store.dispatch(ACTION.USERS, (offset - 1) * 5)
+    },
+
+    getLengthPagination () {
+      return Math.ceil(this.users.count / 5)
     }
   }
 }
