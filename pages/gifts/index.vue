@@ -4,7 +4,7 @@
       <div class="row m-b-sm">
         <div class="col-sm-3">
           <n-link
-            v-if="gifts.length < 10"
+            v-if="gifts.rows && gifts.rows.length < 10"
             to="/gifts/create"
             class="btn btn-sm btn-primary"
           >
@@ -108,14 +108,6 @@ export default {
 
   mounted () {
     this.$store.dispatch(ACTION.GIFTS)
-  },
-
-  methods: {
-    deleteGift (id) {
-      this.$store.dispatch(ACTION.DELETE_GIFT, id)
-    },
-
-    editGift (id) {}
   }
 }
 </script>

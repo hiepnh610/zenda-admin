@@ -34,7 +34,7 @@
 
 <script>
 import { STATUS_TOAST } from '@/constants/constants'
-import showToastError from '@/utils/toast'
+import showToast from '@/utils/toast'
 
 export default {
   name: 'Login',
@@ -69,10 +69,11 @@ export default {
         this.$store.commit('setToken', token)
 
         this.loading = false
+        showToast(STATUS_TOAST.SUCCESS, 'Welcome!')
       } catch (error) {
         this.loading = false
 
-        showToastError(STATUS_TOAST.ERROR, error)
+        showToast(STATUS_TOAST.ERROR, error)
       }
     }
   }

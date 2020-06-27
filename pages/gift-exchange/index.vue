@@ -49,7 +49,7 @@
                 >
                   <i class="fa fa-trash-o m-r-xs" />
 
-                  Deleted
+                  Remove
                 </button>
               </td>
             </tr>

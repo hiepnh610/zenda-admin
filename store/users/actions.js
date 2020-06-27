@@ -1,7 +1,7 @@
 import { MUTATION } from '@/constants/name-space'
 import { API } from '@/constants/api'
 import { STATUS_TOAST } from '@/constants/constants'
-import showToastError from '@/utils/toast'
+import showToast from '@/utils/toast'
 
 const actions = {
   getUsers (context) {
@@ -13,7 +13,7 @@ const actions = {
         })
       })
       .catch((error) => {
-        showToastError(STATUS_TOAST.ERROR, error)
+        showToast(STATUS_TOAST.ERROR, error)
       })
   },
 
@@ -26,7 +26,7 @@ const actions = {
         })
       })
       .catch((error) => {
-        showToastError(STATUS_TOAST.ERROR, error)
+        showToast(STATUS_TOAST.ERROR, error)
       })
   }
 }

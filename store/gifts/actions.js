@@ -1,7 +1,7 @@
 import { MUTATION } from '@/constants/name-space'
 import { API } from '@/constants/api'
 import { STATUS_TOAST } from '@/constants/constants'
-import showToastError from '@/utils/toast'
+import showToast from '@/utils/toast'
 
 const actions = {
   getGifts (context) {
@@ -13,22 +13,19 @@ const actions = {
         })
       })
       .catch((error) => {
-        showToastError(STATUS_TOAST.ERROR, error)
+        showToast(STATUS_TOAST.ERROR, error)
       })
   },
 
   createGift (context, payload) {
     return this.$axios
       .post(`${API.GIFT}`, { payload })
-      .then((response) => {
-        context.commit(MUTATION.CREATE_GIFT, response.data, {
-          root: true
-        })
-
+      .then(() => {
+        showToast(STATUS_TOAST.SUCCESS, 'Create Successfully.')
         this.app.router.push('/gifts')
       })
       .catch((error) => {
-        showToastError(STATUS_TOAST.ERROR, error)
+        showToast(STATUS_TOAST.ERROR, error)
       })
   },
 
@@ -36,23 +33,11 @@ const actions = {
     return this.$axios
       .put(`${API.GIFT}/${payload.id}`, payload)
       .then(() => {
+        showToast(STATUS_TOAST.SUCCESS, 'Update Successfully.')
         this.app.router.push('/gifts')
       })
       .catch((error) => {
-        showToastError(STATUS_TOAST.ERROR, error)
-      })
-  },
-
-  deleteGift (context, payload) {
-    return this.$axios
-      .delete(`${API.GIFT}/${payload}`)
-      .then(() => {
-        context.commit(MUTATION.DELETE_GIFT, payload, {
-          root: true
-        })
-      })
-      .catch((error) => {
-        showToastError(STATUS_TOAST.ERROR, error)
+        showToast(STATUS_TOAST.ERROR, error)
       })
   },
 
@@ -65,7 +50,7 @@ const actions = {
         })
       })
       .catch((error) => {
-        showToastError(STATUS_TOAST.ERROR, error)
+        showToast(STATUS_TOAST.ERROR, error)
       })
   }
 }

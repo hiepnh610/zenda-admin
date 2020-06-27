@@ -88,6 +88,8 @@ export default {
       }
 
       this.$store.dispatch(ACTION.CREATE_GIFT, payload)
+
+      this.loading = false
     }
   }
 }

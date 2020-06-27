@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
-const showToastError = (type, payload) => {
-  let message = 'Error happened.'
+const showToast = (type, payload) => {
+  let message = payload
 
   if (
     payload.response &&
@@ -14,4 +14,4 @@ const showToastError = (type, payload) => {
   Vue.toasted.show(message, { type })
 }
 
-export default showToastError
+export default showToast
