@@ -9,5 +9,6 @@ export const API = {
 
   TRANSACTION: '/api/transaction',
   TRANSACTIONS: '/api/transactions',
-  SETTINGS: '/api/settings'
+
+  TOP_POINTS: '/api/top-points'
 }
