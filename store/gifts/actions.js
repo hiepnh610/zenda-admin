@@ -5,15 +5,27 @@ import showToast from '@/utils/toast'
 
 const actions = {
   getGifts (context, payload) {
+    context.commit(MUTATION.LOADING, true, {
+      root: true
+    })
+
     return this.$axios
       .get(`${API.GIFTS}?offset=${payload}`)
       .then((response) => {
         context.commit(MUTATION.GIFTS, response.data, {
           root: true
         })
+
+        context.commit(MUTATION.LOADING, false, {
+          root: true
+        })
       })
       .catch((error) => {
         showToast(STATUS_TOAST.ERROR, error)
+
+        context.commit(MUTATION.LOADING, false, {
+          root: true
+        })
       })
   },
 
@@ -42,15 +54,27 @@ const actions = {
   },
 
   getGiftDetail (context, payload) {
+    context.commit(MUTATION.LOADING, true, {
+      root: true
+    })
+
     return this.$axios
       .get(`${API.GIFT}/${payload}`)
       .then((response) => {
         context.commit(MUTATION.GIFT_DETAIL, response.data, {
           root: true
         })
+
+        context.commit(MUTATION.LOADING, false, {
+          root: true
+        })
       })
       .catch((error) => {
         showToast(STATUS_TOAST.ERROR, error)
+
+        context.commit(MUTATION.LOADING, false, {
+          root: true
+        })
       })
   }
 }

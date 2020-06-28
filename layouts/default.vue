@@ -9,6 +9,8 @@
         <nuxt />
       </div>
     </div>
+
+    <LoadingComponent />
   </div>
 </template>
 
@@ -16,13 +18,15 @@
 import { mapGetters } from 'vuex'
 import SidebarComponent from '@/components/sidebar.vue'
 import HeaderComponent from '@/components/header.vue'
+import LoadingComponent from '@/components/loading.vue'
 
 export default {
   name: 'Layout',
 
   components: {
     SidebarComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoadingComponent
   },
 
   computed: {

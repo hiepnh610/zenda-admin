@@ -9,7 +9,7 @@
         <a
           class="navbar-minimalize minimalize-styl-2 btn btn-primary"
           href="#"
-          @click="toggleSidebar()"
+          @click.prevent="toggleSidebar()"
         >
           <i class="fa fa-bars" />
         </a>

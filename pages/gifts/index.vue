@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="table-responsive">
+      <div v-if="gifts.rows && gifts.rows.length" class="table-responsive">
         <table class="table table-striped">
           <thead>
             <tr v-if="columns">
@@ -76,6 +76,12 @@
             </tr>
           </tfoot>
         </table>
+      </div>
+
+      <div v-else>
+        <p class="text-center h3">
+          NO DATA
+        </p>
       </div>
     </div>
   </div>

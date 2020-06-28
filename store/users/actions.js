@@ -5,15 +5,25 @@ import showToast from '@/utils/toast'
 
 const actions = {
   getUsers (context, payload) {
+    context.commit(MUTATION.LOADING, true, {
+      root: true
+    })
+
     return this.$axios
       .get(`${API.USERS}?offset=${payload}`)
       .then((response) => {
         context.commit(MUTATION.USERS, response.data, {
           root: true
         })
+        context.commit(MUTATION.LOADING, false, {
+          root: true
+        })
       })
       .catch((error) => {
         showToast(STATUS_TOAST.ERROR, error)
+        context.commit(MUTATION.LOADING, false, {
+          root: true
+        })
       })
   },
 

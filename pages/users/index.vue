@@ -1,7 +1,10 @@
 <template>
   <div class="ibox">
     <div class="ibox-content">
-      <div class="table-responsive">
+      <div
+        v-if="users.rows && users.rows.length"
+        class="table-responsive"
+      >
         <table class="table table-striped">
           <thead>
             <tr v-if="columns">
@@ -61,6 +64,12 @@
             </tr>
           </tfoot>
         </table>
+      </div>
+
+      <div v-else>
+        <p class="text-center h3">
+          NO DATA
+        </p>
       </div>
     </div>
   </div>

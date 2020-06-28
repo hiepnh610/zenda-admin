@@ -1,10 +1,12 @@
 <template>
-  <chart
-    v-if="loaded"
-    :data="barChartData"
-    :options="barChartOptions"
-    :height="200"
-  />
+  <div class="col-12 col-md-6">
+    <chart
+      v-if="loaded"
+      :data="barChartData"
+      :options="barChartOptions"
+      :height="200"
+    />
+  </div>
 </template>
 
 <script>
@@ -67,6 +69,7 @@ export default {
           datasets: [{
             label: 'Points',
             backgroundColor: '#1ab394',
+            barThickness: 10,
             data: users.rows.map(user => user.receive_bag)
           }]
         }
