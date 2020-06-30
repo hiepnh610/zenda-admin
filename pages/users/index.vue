@@ -17,7 +17,9 @@
           <tbody v-if="users.rows">
             <tr v-for="user in users.rows" :key="user.id">
               <td>
-                {{ user.display_name }}
+                <n-link :to="'/users/' + user.id" class="text-navy">
+                  {{ user.display_name }}
+                </n-link>
               </td>
 
               <td>

@@ -1,5 +1,6 @@
 export const ACTION = {
   USERS: 'users/getUsers',
+  USER_DETAIL: 'users/getUserDetail',
   DELETE_USER: 'users/deleteUser',
 
   GIFTS: 'gifts/getGifts',
@@ -23,6 +24,7 @@ export const MUTATION = {
   LOADING: 'loading/setLoading',
 
   USERS: 'users/setUsers',
+  USER_DETAIL: 'users/setToGetUserDetail',
   DELETE_USER: 'users/setToDeleteUser',
 
   GIFTS: 'gifts/setGifts',
@@ -43,6 +45,7 @@ export const MUTATION = {
 export const GETTER = {
   LOADING: 'loading/getLoading',
   USERS: 'users/getUsers',
+  USER_DETAIL: 'users/getUserDetail',
   GIFTS: 'gifts/getGifts',
   GIFT_DETAIL: 'gifts/getGiftDetail',
   GIFT_EXCHANGE: 'gift-exchange/getGifts',

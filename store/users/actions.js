@@ -27,6 +27,29 @@ const actions = {
       })
   },
 
+  getUserDetail (context, payload) {
+    context.commit(MUTATION.LOADING, true, {
+      root: true
+    })
+
+    return this.$axios
+      .get(`${API.USER}/${payload}`)
+      .then((response) => {
+        context.commit(MUTATION.USER_DETAIL, response.data, {
+          root: true
+        })
+        context.commit(MUTATION.LOADING, false, {
+          root: true
+        })
+      })
+      .catch((error) => {
+        showToast(STATUS_TOAST.ERROR, error)
+        context.commit(MUTATION.LOADING, false, {
+          root: true
+        })
+      })
+  },
+
   deleteUser (context, payload) {
     return this.$axios
       .delete(`${API.USER}/${payload}`)
