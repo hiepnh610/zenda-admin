@@ -35,9 +35,11 @@
 
               <td>
                 <button
-                  class="btn btn-xs btn-danger"
+                  class="btn btn-sm btn-danger"
                   @click="removeTransaction(transaction.id)"
                 >
+                  <i class="fa fa-trash-o m-r-xs" />
+
                   Remove
                 </button>
               </td>

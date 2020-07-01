@@ -8,13 +8,18 @@
       <ul id="side-menu" class="nav metismenu">
         <li class="nav-header">
           <div class="dropdown profile-element">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <a
+              class="dropdown-toggle"
+              href="#"
+              @click.prevent="goToDashboard()"
+            >
               <span class="clear">
                 <span class="block m-t-xs">
                   <strong class="font-bold">Admin</strong>
                 </span>
               </span>
             </a>
+
             <ul class="dropdown-menu animated fadeInRight m-t-xs">
               <li><a href="profile.html">Profile</a></li>
               <li><a href="contacts.html">Contacts</a></li>
@@ -80,6 +85,12 @@ export default {
 
   computed: {
     ...mapGetters(['isAuthenticated'])
+  },
+
+  methods: {
+    goToDashboard () {
+      this.$router.push('/dashboard')
+    }
   }
 }
 </script>

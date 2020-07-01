@@ -4,6 +4,7 @@ export const ACTION = {
   DELETE_USER: 'users/deleteUser',
 
   GIFTS: 'gifts/getGifts',
+  CREATE_GIFT: 'gifts/createGift',
   UPDATE_GIFT: 'gifts/updateGift',
   GIFT_DETAIL: 'gifts/getGiftDetail',
 

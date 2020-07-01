@@ -36,9 +36,11 @@
 
               <td>
                 <button
-                  class="btn btn-xs btn-danger"
+                  class="btn btn-sm btn-danger"
                   @click.prevent="removeUser(user.id)"
                 >
+                  <i class="fa fa-trash-o m-r-xs" />
+
                   Remove
                 </button>
               </td>
@@ -89,7 +91,7 @@ export default {
 
   data () {
     return {
-      columns: ['User Name', 'Give Bag', 'Receive Bag', 'Created At', 'Actions']
+      columns: ['Display Name', 'Give Bag', 'Receive Bag', 'Created At', '']
     }
   },
 

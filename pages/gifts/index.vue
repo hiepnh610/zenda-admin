@@ -49,6 +49,7 @@
               <td>
                 <n-link :to="'/gifts/' + gift.id" class="btn btn-sm btn-warning">
                   <i class="fa fa-pencil m-r-xs" />
+
                   Edit
                 </n-link>
               </td>
@@ -99,7 +100,7 @@ export default {
 
   data () {
     return {
-      columns: ['Image', 'Name', 'Quantity', 'Points', 'Created At', '']
+      columns: ['Image', 'Gift Name', 'Quantity', 'Points', 'Created At', '']
     }
   },
 
