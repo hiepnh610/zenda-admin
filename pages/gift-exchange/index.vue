@@ -14,11 +14,9 @@
           <tbody v-if="gifts.rows">
             <tr v-for="gift in gifts.rows" :key="gift.id">
               <td>
-                {{ gift.id }}
-              </td>
-
-              <td>
-                {{ gift.display_name }}
+                <n-link :to="'/users/' + gift.user_request_id" class="text-navy">
+                  {{ gift.display_name }}
+                </n-link>
               </td>
 
               <td>
@@ -99,7 +97,7 @@ export default {
 
   data () {
     return {
-      columns: ['ID', 'Image', 'Gift', 'Created At', 'Status', '']
+      columns: ['Image', 'Gift', 'Created At', 'Status', '']
     }
   },
 

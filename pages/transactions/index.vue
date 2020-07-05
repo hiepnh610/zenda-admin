@@ -14,11 +14,21 @@
           <tbody v-if="transactions.rows">
             <tr v-for="transaction in transactions.rows" :key="transaction.id">
               <td>
-                {{ transaction.user_request }}
+                <n-link
+                  :to="'/users/' + transaction.user_request_id"
+                  class="text-navy"
+                >
+                  {{ transaction.user_request }}
+                </n-link>
               </td>
 
               <td>
-                {{ transaction.user_receive }}
+                <n-link
+                  :to="'/users/' + transaction.user_receive_id"
+                  class="text-navy"
+                >
+                  {{ transaction.user_receive }}
+                </n-link>
               </td>
 
               <td>
