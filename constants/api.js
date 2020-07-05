@@ -10,5 +10,6 @@ export const API = {
   TRANSACTION: '/api/transaction',
   TRANSACTIONS: '/api/transactions',
 
-  TOP_POINTS: '/api/top-points'
+  TOP_RECEIVE_POINTS: '/api/top-receive-points',
+  TOP_GIVE_POINTS: '/api/top-give-points'
 }

@@ -1,5 +1,6 @@
 const states = () => ({
-  topPoints: []
+  topReceivePoints: [],
+  topGivePoints: []
 })
 
 export default states

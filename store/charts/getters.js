@@ -1,6 +1,10 @@
 const getters = {
-  getTopPoints (state) {
-    return state.topPoints
+  getTopReceivePoints (state) {
+    return state.topReceivePoints
+  },
+
+  getTopGivePoints (state) {
+    return state.topGivePoints
   }
 }
 

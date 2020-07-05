@@ -17,7 +17,8 @@ export const ACTION = {
 
   TOASTED: 'toast/showToast',
 
-  TOP_POINTS: 'charts/getTopPoints'
+  TOP_RECEIVE_POINTS: 'charts/getTopReceivePoints',
+  TOP_GIVE_POINTS: 'charts/getTopGivePoints'
 }
 
 export const MUTATION = {
@@ -40,7 +41,8 @@ export const MUTATION = {
 
   TOASTED: 'toast/setToShowToast',
 
-  TOP_POINTS: 'charts/setTopPoints'
+  TOP_RECEIVE_POINTS: 'charts/setTopReceivePoints',
+  TOP_GIVE_POINTS: 'charts/setTopGivePoints'
 }
 
 export const GETTER = {
@@ -52,5 +54,6 @@ export const GETTER = {
   GIFT_EXCHANGE: 'gift-exchange/getGifts',
   TRANSACTIONS: 'transactions/getTransactions',
   TOASTED: 'toast/getToast',
-  TOP_POINTS: 'charts/getTopPoints'
+  TOP_RECEIVE_POINTS: 'charts/getTopReceivePoints',
+  TOP_GIVE_POINTS: 'charts/getTopGivePoints'
 }

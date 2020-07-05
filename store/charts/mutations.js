@@ -1,6 +1,10 @@
 const mutations = {
-  setTopPoints (state, payload) {
-    state.topPoints = payload
+  setTopReceivePoints (state, payload) {
+    state.topReceivePoints = payload
+  },
+
+  setTopGivePoints (state, payload) {
+    state.topGivePoints = payload
   }
 }
 

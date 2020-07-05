@@ -1,11 +1,22 @@
 <template>
-  <div class="col-12 col-md-6">
-    <chart
-      v-if="loaded"
-      :data="barChartData"
-      :options="barChartOptions"
-      :height="200"
-    />
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <chart
+        v-if="isTopReceiveLoaded"
+        :data="topReceivePointsData"
+        :options="barChartOptions"
+        :height="200"
+      />
+    </div>
+
+    <div class="col-12 col-md-6">
+      <chart
+        v-if="isTopGiveLoaded"
+        :data="topGivePointsData"
+        :options="barChartOptions"
+        :height="200"
+      />
+    </div>
   </div>
 </template>
 
@@ -26,20 +37,23 @@ export default {
 
   data () {
     return {
-      loaded: false,
-      barChartData: {
+      isTopReceiveLoaded: false,
+      isTopGiveLoaded: false,
+      topReceivePointsData: {
         labels: [],
         datasets: []
       },
-
+      topGivePointsData: {
+        labels: [],
+        datasets: []
+      },
       barChartOptions: {
         responsive: true,
         legend: {
           display: false
         },
         title: {
-          display: true,
-          text: 'Top Points Receive'
+          display: true
         },
         scales: {
           yAxes: [
@@ -56,15 +70,16 @@ export default {
 
   computed: {
     ...mapGetters({
-      topPoints: GETTER.TOP_POINTS
+      topReceivePoints: GETTER.TOP_RECEIVE_POINTS,
+      topGivePoints: GETTER.TOP_GIVE_POINTS
     })
   },
 
   watch: {
-    topPoints (users) {
+    topReceivePoints (users) {
       if (users) {
-        this.loaded = true
-        this.barChartData = {
+        this.isTopReceiveLoaded = true
+        this.topReceivePointsData = {
           labels: users.rows.map(user => user.display_name),
           datasets: [{
             label: 'Points',
@@ -73,12 +88,30 @@ export default {
             data: users.rows.map(user => user.receive_bag)
           }]
         }
+        this.barChartOptions.title.text = 'Top Receive Points'
+      }
+    },
+
+    topGivePoints (users) {
+      if (users) {
+        this.isTopGiveLoaded = true
+        this.topGivePointsData = {
+          labels: users.map(user => user.display_name),
+          datasets: [{
+            label: 'Points',
+            backgroundColor: '#1ab394',
+            barThickness: 10,
+            data: users.map(user => user.amount)
+          }]
+        }
+        this.barChartOptions.title.text = 'Top Give Points'
       }
     }
   },
 
   mounted () {
-    this.$store.dispatch(ACTION.TOP_POINTS)
+    this.$store.dispatch(ACTION.TOP_RECEIVE_POINTS)
+    this.$store.dispatch(ACTION.TOP_GIVE_POINTS)
   }
 }
 </script>
