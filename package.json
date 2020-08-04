@@ -15,6 +15,7 @@
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/recaptcha": "^0.6.2",
     "chart.js": "^2.9.3",
     "compression": "^1.7.4",
     "connect-history-api-fallback": "^1.6.0",

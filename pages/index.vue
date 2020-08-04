@@ -19,6 +19,12 @@
         >
       </div>
 
+      <recaptcha
+        @error="onRecaptchaError"
+        @success="onRecaptchaSuccess"
+        @expired="onRecaptchaExpired"
+      />
+
       <button
         type="submit"
         class="btn btn-primary block full-width m-b"
@@ -55,9 +61,21 @@ export default {
     async login () {
       this.loading = true
       try {
+        await this.$recaptcha.getResponse()
+        await this.$recaptcha.reset()
+      } catch (error) {
+        this.loading = false
+
+        showToast(STATUS_TOAST.ERROR, error)
+      }
+    },
+
+    async onRecaptchaSuccess (captchaToken) {
+      try {
         const payload = {
           username: this.username,
-          password: this.password
+          password: this.password,
+          captchaToken
         }
 
         await this.$auth.loginWith('local', {
@@ -75,6 +93,14 @@ export default {
 
         showToast(STATUS_TOAST.ERROR, error)
       }
+    },
+
+    onRecaptchaError (error) {
+      showToast(STATUS_TOAST.ERROR, error)
+    },
+
+    onRecaptchaExpired () {
+      showToast(STATUS_TOAST.ERROR, 'Recaptcha Expired.')
     }
   }
 }
