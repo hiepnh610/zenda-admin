@@ -10,7 +10,7 @@ const actions = {
     })
 
     return this.$axios
-      .get(`${API.GIFTS}?offset=${payload}`)
+      .get(`${API.GIFTS}?offset=${payload.offset}&limit=${payload.limit}`)
       .then((response) => {
         context.commit(MUTATION.GIFTS, response.data, {
           root: true

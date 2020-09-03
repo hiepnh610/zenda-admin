@@ -58,21 +58,49 @@
 
           <tfoot v-if="transactions.rows">
             <tr>
-              <td colspan="5" class="footable-visible">
-                <ul class="pagination">
-                  <li
-                    v-for="index in getLengthPagination()"
-                    :key="index"
-                    class="footable-page"
-                  >
-                    <a
-                      href="#"
-                      @click.prevent="changePagination(index)"
+              <td colspan="6" class="footable-visible">
+                <div class="m-t-md form-inline dt-bootstrap">
+                  <div class="pull-left">
+                    <p>
+                      Show
+
+                      <select
+                        v-model="limit"
+                        class="form-control m-l-xs m-r-xs"
+                        @change="onChangeLimit($event)"
+                      >
+                        <option
+                          v-for="number in listLimit"
+                          :key="number"
+                          :value="number"
+                        >
+                          {{ number }}
+                        </option>
+                      </select>
+
+                      entries
+                    </p>
+                  </div>
+
+                  <ul class="pagination pull-right m-n">
+                    <li
+                      v-for="index in getLengthPagination()"
+                      :key="index"
+                      :class="{ active: index === (offset + 1) }"
+                      class="footable-page"
                     >
-                      {{ index }}
-                    </a>
-                  </li>
-                </ul>
+                      <a
+                        href="#"
+                        :disabled="index === (offset + 1)"
+                        @click.prevent="
+                          index !== (offset + 1) && changePagination(index)
+                        "
+                      >
+                        {{ index }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </td>
             </tr>
           </tfoot>
@@ -100,7 +128,17 @@ export default {
 
   data () {
     return {
-      columns: ['User Request', 'User Receive', 'Amount', 'Message', 'Created At', '']
+      columns: [
+        'User Request',
+        'User Receive',
+        'Amount',
+        'Message',
+        'Created At',
+        ''
+      ],
+      listLimit: [5, 10, 25, 50, 100],
+      limit: 5,
+      offset: 0
     }
   },
 
@@ -111,7 +149,12 @@ export default {
   },
 
   mounted () {
-    this.$store.dispatch(ACTION.TRANSACTIONS, 0)
+    const payload = {
+      offset: this.offset,
+      limit: this.limit
+    }
+
+    this.$store.dispatch(ACTION.TRANSACTIONS, payload)
   },
 
   methods: {
@@ -119,12 +162,28 @@ export default {
       this.$store.dispatch(ACTION.DELETE_TRANSACTION, transactionId)
     },
 
-    changePagination (offset) {
-      this.$store.dispatch(ACTION.TRANSACTIONS, (offset - 1) * 5)
+    changePagination (value) {
+      this.offset = value - 1
+
+      const payload = {
+        offset: this.offset * this.limit,
+        limit: this.limit
+      }
+
+      this.$store.dispatch(ACTION.TRANSACTIONS, payload)
     },
 
     getLengthPagination () {
-      return Math.ceil(this.transactions.count / 5)
+      return Math.ceil(this.transactions.count / this.limit)
+    },
+
+    onChangeLimit () {
+      const payload = {
+        offset: this.offset,
+        limit: this.limit
+      }
+
+      this.$store.dispatch(ACTION.TRANSACTIONS, payload)
     }
   }
 }

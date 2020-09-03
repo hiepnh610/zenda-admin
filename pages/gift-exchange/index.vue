@@ -30,12 +30,14 @@
               <td>
                 <div class="toggle">
                   <i
-                    class="fa text-navy"
+                    class="fa"
                     :class="{
-                      'fa-toggle-on': gift.status,
-                      'fa-toggle-off': !gift.status
+                      'fa-check-square-o text-navy': gift.status,
+                      'fa-square-o': !gift.status
                     }"
-                    @click.prevent="updateStatus(gift.id, !gift.status)"
+                    @click.prevent="
+                      !gift.status && updateStatus(gift.id, !gift.status)
+                    "
                   />
                 </div>
               </td>
@@ -56,20 +58,48 @@
           <tfoot v-if="gifts.rows">
             <tr>
               <td colspan="6" class="footable-visible">
-                <ul class="pagination">
-                  <li
-                    v-for="index in getLengthPagination()"
-                    :key="index"
-                    class="footable-page"
-                  >
-                    <a
-                      href="#"
-                      @click.prevent="changePagination(index)"
+                <div class="m-t-md form-inline dt-bootstrap">
+                  <div class="pull-left">
+                    <p>
+                      Show
+
+                      <select
+                        v-model="limit"
+                        class="form-control m-l-xs m-r-xs"
+                        @change="onChangeLimit($event)"
+                      >
+                        <option
+                          v-for="number in listLimit"
+                          :key="number"
+                          :value="number"
+                        >
+                          {{ number }}
+                        </option>
+                      </select>
+
+                      entries
+                    </p>
+                  </div>
+
+                  <ul class="pagination pull-right m-n">
+                    <li
+                      v-for="index in getLengthPagination()"
+                      :key="index"
+                      :class="{ active: index === (offset + 1) }"
+                      class="footable-page"
                     >
-                      {{ index }}
-                    </a>
-                  </li>
-                </ul>
+                      <a
+                        href="#"
+                        :disabled="index === (offset + 1)"
+                        @click.prevent="
+                          index !== (offset + 1) && changePagination(index)
+                        "
+                      >
+                        {{ index }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </td>
             </tr>
           </tfoot>
@@ -97,7 +127,10 @@ export default {
 
   data () {
     return {
-      columns: ['Image', 'Gift', 'Created At', 'Status', '']
+      columns: ['Name', 'Gift', 'Created At', 'Status', ''],
+      listLimit: [5, 10, 25, 50, 100],
+      limit: 5,
+      offset: 0
     }
   },
 
@@ -108,7 +141,12 @@ export default {
   },
 
   mounted () {
-    this.$store.dispatch(ACTION.GIFT_EXCHANGE, 0)
+    const payload = {
+      offset: this.offset,
+      limit: this.limit
+    }
+
+    this.$store.dispatch(ACTION.GIFT_EXCHANGE, payload)
   },
 
   methods: {
@@ -121,12 +159,28 @@ export default {
       this.$store.dispatch(ACTION.GIFT_EXCHANGE_DELETE_STATUS, id)
     },
 
-    changePagination (offset) {
-      this.$store.dispatch(ACTION.GIFT_EXCHANGE, (offset - 1) * 5)
+    changePagination (value) {
+      this.offset = value - 1
+
+      const payload = {
+        offset: this.offset * this.limit,
+        limit: this.limit
+      }
+
+      this.$store.dispatch(ACTION.GIFT_EXCHANGE, payload)
     },
 
     getLengthPagination () {
-      return Math.ceil(this.gifts.count / 5)
+      return Math.ceil(this.gifts.count / this.limit)
+    },
+
+    onChangeLimit () {
+      const payload = {
+        offset: this.offset,
+        limit: this.limit
+      }
+
+      this.$store.dispatch(ACTION.GIFT_EXCHANGE, payload)
     }
   }
 }
@@ -135,6 +189,6 @@ export default {
 <style lang="scss" scoped>
 ::v-deep .toggle .fa {
   cursor: pointer;
-  font-size: 24px;
+  font-size: 20px;
 }
 </style>

@@ -11,7 +11,7 @@ export default {
   mode: 'spa',
 
   head: {
-    title: 'Zenda Bot Admin Management',
+    title: 'Zenda Admin Management',
 
     meta: [
       { charset: 'utf-8' },
@@ -19,7 +19,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Zenda Bot Admin Management'
+        content: 'Zenda Admin Management'
       }
     ],
 
@@ -61,7 +61,7 @@ export default {
 
   recaptcha: {
     hideBadge: true,
-    siteKey: process.env.KEY_RECAPTCHA,
+    siteKey: devEnv.KEY_RECAPTCHA,
     version: 2,
     size: 'invisible'
   },
