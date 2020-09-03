@@ -5,12 +5,19 @@ import showToast from '@/utils/toast'
 
 const actions = {
   getUsers (context, payload) {
+    const { offset, limit, displayName } = payload
+    const params = {
+      offset,
+      limit,
+      display_name: displayName
+    }
+
     context.commit(MUTATION.LOADING, true, {
       root: true
     })
 
     return this.$axios
-      .get(`${API.USERS}?offset=${payload}`)
+      .get(`${API.USERS}`, { params })
       .then((response) => {
         context.commit(MUTATION.USERS, response.data, {
           root: true
